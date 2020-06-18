@@ -45,4 +45,3 @@ RUN php artisan key:generate
 # RUN php artisan optimize
 
 EXPOSE 9000 9001
-
