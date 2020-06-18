@@ -1,0 +1,64 @@
+version: '2'
+
+services:
+
+  # The Application
+  # docker-compose exec app bash
+  app:
+    container_name: laravel_app
+    build:
+      context: ./
+      dockerfile: docker/app.dockerfile
+    volumes:
+      - ./:/var/www
+      - ./storage:/var/www/storage
+    env_file: '.env'
+    environment:
+      - "DB_HOST=database"
+      - "REDIS_HOST=cache"
+
+  # The Web Server
+  web:
+    container_name: nginx_server
+    build:
+      context: ./
+      dockerfile: docker/web.dockerfile
+    volumes:
+      - ./:/var/www
+      - ./storage/logs/:/var/log/nginx
+    ports:
+      - 80:80
+
+  # The Database
+  database:
+    container_name: mysql_database
+    image: mysql:5.7
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - "MYSQL_DATABASE=Baly"
+      - "MYSQL_USER=phpmyadmin"
+      - "MYSQL_PASSWORD=phpmyadmin"
+      - "MYSQL_ROOT_PASSWORD=finallyJDBC2017."
+    ports:
+      - 8991:3306
+
+  #  phpmyadmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - database:db
+    ports:
+      - 8080:80
+    environment:
+      MYSQL_USER: phpmyadmin
+      MYSQL_PASSWORD: phpmyadmin
+      MYSQL_ROOT_PASSWORD: finallyJDBC2017
+
+  # redis
+  # docker-compose exec cache /bin/sh
+  cache:
+    image: redis:3.0-alpine
+
+volumes:
+  dbdata:
