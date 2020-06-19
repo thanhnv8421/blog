@@ -6,12 +6,7 @@ services:
   # docker-compose exec app bash
   app:
     container_name: laravel_app
-    build:
-      context: ./
-      dockerfile: docker/app.dockerfile
-    volumes:
-      - ./:/var/www
-      - ./storage:/var/www/storage
+    image: sonsamset13579/thanhnv_php
     env_file: '.env'
     environment:
       - "DB_HOST=database"
@@ -20,9 +15,7 @@ services:
   # The Web Server
   web:
     container_name: nginx_server
-    build:
-      context: ./
-      dockerfile: docker/web.dockerfile
+    image: sonsamset13579/thanhnv_nginx
     volumes:
       - ./:/var/www
       - ./storage/logs/:/var/log/nginx
