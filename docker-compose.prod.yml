@@ -52,6 +52,10 @@ services:
   # docker-compose exec cache /bin/sh
   cache:
     image: redis:3.0-alpine
-
+  # jenkin
+  jenkin:
+    image: jenkins/jenkins
+    ports:
+      - 8081:8080
 volumes:
   dbdata:
