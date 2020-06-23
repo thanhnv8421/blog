@@ -81,10 +81,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel - 4
+                    Laravel - 5
                 </div>
-
-                <img src="/ok.jpeg" alt="">
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
