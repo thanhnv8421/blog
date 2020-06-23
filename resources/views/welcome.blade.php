@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel - 3
+                    Laravel - 4
                 </div>
 
                 <img src="/ok.jpeg" alt="">
