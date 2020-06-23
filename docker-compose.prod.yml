@@ -1,28 +1,18 @@
 version: '2'
 
 services:
-
-  # The Application
-  # docker-compose exec app bash
+  # PHP Fpm
   app:
-    container_name: laravel_app
     image: sonsamset13579/thanhnv_php
-    env_file: '.env'
     environment:
       - "DB_HOST=database"
       - "REDIS_HOST=cache"
-
-  # The Web Server
+  # Nginx
   web:
-    container_name: nginx_server
     image: sonsamset13579/thanhnv_nginx
-    volumes:
-      - ./:/var/www
-      - ./storage/logs/:/var/log/nginx
     ports:
       - 80:80
-
-  # The Database
+  # Database
   database:
     container_name: mysql_database
     image: mysql:5.7
@@ -36,7 +26,7 @@ services:
     ports:
       - 8991:3306
 
-  #  phpmyadmin
+  # Phpmyadmin
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
@@ -47,7 +37,6 @@ services:
       MYSQL_USER: phpmyadmin
       MYSQL_PASSWORD: phpmyadmin
       MYSQL_ROOT_PASSWORD: finallyJDBC2017
-
   # redis
   # docker-compose exec cache /bin/sh
   cache:
