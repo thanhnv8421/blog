@@ -1,6 +1,6 @@
 FROM nginx:1.10-alpine
 
-RUN echo "build lai 1"
+RUN echo "build lai 2"
 
 ADD docker/vhost.conf /etc/nginx/conf.d/default.conf
 
