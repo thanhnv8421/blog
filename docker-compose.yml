@@ -41,7 +41,7 @@ services:
       - "MYSQL_PASSWORD=phpmyadmin"
       - "MYSQL_ROOT_PASSWORD=finallyJDBC2017."
     ports:
-      - 8991:3306
+      - 3306:3306
 
   #  phpmyadmin
   phpmyadmin:
