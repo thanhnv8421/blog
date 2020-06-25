@@ -28,5 +28,6 @@ RUN chmod -R 0777 bootstrap
 RUN cp .env.prod .env
 
 RUN composer install
+RUN php artisan migrate
 
 EXPOSE 9000 9001
