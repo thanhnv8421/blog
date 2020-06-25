@@ -15,7 +15,7 @@ RUN apt-get install -y libmcrypt-dev \
         && docker-php-ext-enable mcrypt
 
 
-RUN echo "build lai 6"
+RUN echo "build lai 7"
 WORKDIR /var
 RUN rm -rf www
 RUN git clone https://github.com/thanhnv8421/blog www
